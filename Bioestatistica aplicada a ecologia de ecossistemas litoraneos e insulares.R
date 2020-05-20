@@ -66,6 +66,20 @@ describe(dado) # Calculamos e visualizamos os parametros.
 a= print(describe(dado)) # Armazenamos esses resultados no objeto "a"
 write.csv(a,file = "Describe.csv") #Salvamos um arquivo .csv com esses resultados na nossa pasta de trabalho.
 
+## Regressão e correlação
+
+nutrientes <- c(1,1,1,3,3,3,6,6,6,9,9,9,12,12,12,15,15,15)
+peso <- c(10,8,9, 12,11,13,15,13,12,16,17,15,18,19,18,20,19,18)
+
+plot(peso~nutrientes, xlab="Nutrientes(ug.L)", ylab="Peso(g)",par(cex.axis=1.4,cex.lab=1.4,las=1,bty="l", tcl=0.3,pch=16,cex=1.4,family = "serif"))
+reg <- lm(peso~nutrientes)
+abline (reg, col = "red")
+legend("bottomright", bty="n", legend="r 0.95", cex = 1.2) #plotar o valor da correlação
+
+#também é possível plotar o coeficiênte de determinação
+summary(reg)# o summary da regressão nos dá o coeficiênte de determinação que também pode ser plotado
+legend("bottomright", bty="n", legend=paste("r² 0,91"), cex = 1.2) #plotar o coeficiente de determinação
+
 
 ## AGORA VAMOS REALIZAR O TESTE-T Comparando os comprimentos de machos e femeas para verificar se há diferença no tamanho dos peixes de acordo com o sexo.
 
